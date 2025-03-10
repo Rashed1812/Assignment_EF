@@ -16,8 +16,8 @@ namespace Assignment03_EF
         public string Description { get; set; }
         public int Top_Id { get; set; }
         public Topic topic { get; set; }
-        public ICollection<Stud_Course> stud_Courses { get; set; }
-        public ICollection<Course_Inst> course_Insts { get; set; }
+        public ICollection<Stud_Course> stud_Courses { get; set; } = new HashSet<Stud_Course>();
+        public ICollection<Course_Inst> course_Insts { get; set; } = new HashSet<Course_Inst>();
 
     }
 }
