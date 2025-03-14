@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Assignment_EF;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,16 +14,22 @@ namespace Assignment03_EF.Data
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=rashed\\sqlexpress;Initial Catalog=ITI_ASS;Integrated Security=True;Encrypt=False;Trust Server Certificate=True");
+            optionsBuilder.UseLazyLoadingProxies().UseSqlServer("Data Source=rashed\\sqlexpress;Initial Catalog=ITI_ASS;Integrated Security=True;Encrypt=False;Trust Server Certificate=True");
             base.OnConfiguring(optionsBuilder);
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+
+            modelBuilder.Entity<StudentDepartment>().ToView("StudentDepartmentView");
             base.OnModelCreating(modelBuilder);
         }
         public DbSet<Course_Inst> course_Insts { get; set; }
         public DbSet<Stud_Course> stud_Courses { get; set; }
+        public DbSet<Student> Students { get; set; }
+        public DbSet<Department> Departments { get; set; }
+
+        public DbSet<StudentDepartment> studentDepartments { get; set; }
 
     }
 }
