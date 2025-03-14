@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace Assignment03_EF
 {
-    class Topic
+    public class Topic
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public ICollection<Course> courses { get; set; } = new HashSet<Course>();
+        public virtual ICollection<Course> courses { get; set; } = new HashSet<Course>();
     }
 }

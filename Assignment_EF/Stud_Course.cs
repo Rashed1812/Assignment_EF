@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 namespace Assignment03_EF
 {
     [PrimaryKey(nameof(stud_ID),nameof(Course_ID))]
-    class Stud_Course
+    public class Stud_Course
     {
         public int stud_ID { get; set; }
         public int Course_ID { get; set; }
         public int Grade { get; set; }
         [ForeignKey(nameof(stud_ID))]
-        public Student Student { get; set; }
+        public virtual Student Student { get; set; }
         [ForeignKey(nameof(Course_ID))]
-        public Course Course { get; set; }
+        public virtual Course Course { get; set; }
     }
 }
